@@ -1,0 +1,73 @@
+﻿@using AuctionDemo.Models
+@model AuctionDemo.Models.ProductModel
+
+@{var someVariable = "visible";}
+<div class="tab-pane fade" id="yorumlar" role="tabpanel" aria-labelledby="yorumlar-tab">
+
+    <div class="container pb-cmnt-container">
+        <div class="row">
+            <div class="row mt-2 ">
+                <div class="col-md-12">
+                    @*@if (Model.Comments.Count != 0)
+            {
+                <h4 id="product-price">Yapılan Son Yorum : @Model.Comments[Model.Comments.Count - 1].ContentText <i class="fas fa-lira-sign"></i></h4>
+            }*@
+                    @if (Model.Comments.Count == 0)
+                    {
+                        someVariable = "hidden";
+                        <h5 id="product-price"style="margin-left:11px;">İlk Yorum Yapan Siz Olun! </h5>
+                    }
+
+                </div>
+                 
+                <div class="col-md-12">
+
+                    <ul>
+                        @for (int i = Model.Comments.Count - 1; i >= 0; i--)
+                        {
+                            if (i == Model.Comments.Count - 1)
+                            {
+                                <div class="card" style="width: 900px; color:#000000; background-color: aliceblue; border-radius:5px;position:relative;right:25px;">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="color:firebrick">Gönderen: @Model.Comments[i].UserName</h5>                                    
+                                        <p class="card-text">@Model.Comments[i].ContentText</p>                                   
+                                    </div>
+                                </div>
+                                <br />
+                                @*<li style="color:#F07 BA2">@Model.Comments[i].ContentText <i class="fas fa-lira-sign"></i> - @Model.Comments[i].UserName</li>*@
+                            }
+                            else
+                            {
+                                <div class="card" style="width: 900px; color:#F07BA2; background-color: aliceblue">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="color:firebrick">Gönderen: @Model.Comments[i].UserName</h5>                                       
+                                        <p class="card-text">@Model.Comments[i].ContentText</p>                                      
+                                    </div>
+                                </div>
+                                <br />
+                                @*<li>@Model.Comments[i].ContentText <i class="fas fa-lira-sign"></i> - @Model.Comments[i].UserName</li>*@
+                            }
+
+
+                        }
+
+                    </ul>
+                </div>
+
+
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-info">
+            <div class="panel-body">
+                @*<textarea placeholder="Yorum Yaz!" class="pb-cmnt-textarea"></textarea>*@
+                <input placeholder="Yorum Yaz!" class="pb-cmnt-textarea" id="ContentText" name="ContentText" style="width:600px; height:100px; border-radius:5px; "/>
+                <form class="form-inline"></form>
+            </div>
+        </div>
+        <button class="btn btn-primary pull-right" style="margin-right:15px;margin-top:15px;" type="submit">Gönder</button>
+    </div>
+</div>

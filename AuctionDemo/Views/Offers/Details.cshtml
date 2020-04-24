@@ -1,0 +1,51 @@
+﻿@model AuctionDemo.Entities.Offer
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Detaylar</h2>
+
+<div>
+    <h4>Teklif</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.Name)
+        </dd>
+
+        <dt>
+            Teklif Değeri
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OfferValue)
+        </dd>
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.UserId)
+            </dt>*@
+
+        @*<dd>
+                @Html.DisplayFor(model => model.UserId)
+            </dd>*@
+
+        <dt>
+            Kullanıcı Adı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Güncelle", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Listeye Geri Dön", "Index")
+</p>

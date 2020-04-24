@@ -1,0 +1,87 @@
+﻿@model AuctionDemo.Models.ProductCategoryModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "/Views/Shared/_AdminLayout.cshtml";
+}
+
+@*<h2>Delete</h2>*@
+
+<h3>Bu ürünü silmek istediğine emin misin?</h3>
+<div>
+    <h4>Ürün</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsApproved)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.IsApproved)*@
+            @if (Model.IsApproved)
+            {
+                <label class="badge badge-success">
+                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    Yayında
+                </label>
+            }
+            else
+            {
+                <label class="badge badge-success">
+                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    Yayında Değil
+                </label>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImagePath)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-danger" /> |
+            @Html.ActionLink("Listeye Dön", "Index", null, new { @class = "btn btn-warning" })
+        </div>
+    }
+</div>

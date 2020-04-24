@@ -1,0 +1,23 @@
+﻿@using AuctionDemo.Models;
+@model IEnumerable<ProductModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="jumbotron mt-5">
+    <div class="container">
+        <h1 class="display-4">Açık Artırma Sitesine Hoşgeldiniz!</h1>
+        <p class="lead">Sitemize Güncel Olarak Yeni Ürünler Eklenmekte ve Açık Artırmaya Sunulmaktadır.Farklı Kategoride Birçok Ürünü Sitemizde
+        Bulabilirsiniz. İyi Alışverişler!</p>
+        <hr class="my-4">
+        @*<p>It uses utility classes for typography and spacing to space content out within the larger container.</p>*@
+        @*<a class="btn btn-block btn-lg" href="#" role="button">Learn more</a>*@
+    </div>
+</div>
+<br />
+<div class="container pb-5">
+    @Html.Partial("_ProductList", Model)
+
+</div>
+

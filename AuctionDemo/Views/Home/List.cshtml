@@ -1,0 +1,57 @@
+﻿@using AuctionDemo.Models;
+@model IEnumerable<ProductModel>
+@{
+    ViewBag.Title = "List";
+
+}
+@using (Html.BeginForm("List", "Home", FormMethod.Get))
+{
+    <div class="container pb-5">
+
+        <div class="row mt-5">
+            <div class="col-md-3">
+                @Html.Action("GetCategories", "Home")
+
+
+                <p>Fiyat Aralığı Seçiniz:</p>
+
+                <div>
+                    <input type="radio" id="Price" name="Price" value="range1">
+                    <label for="huey">0-250₺</label>
+                </div>
+
+                <div>
+                    <input type="radio" id="Price" name="Price" value="range2">
+                    <label for="dewey">250-500₺</label>
+                </div>
+
+                <div>
+                    <input type="radio" id="Price" name="Price" value="range3">
+                    <label for="louie">500₺ Üzeri</label>
+                </div>
+
+
+                <div class="row mt-5">
+                    <div class="col-md-3">
+                        <button type="submit" class="btn btn-success" style="margin-top:10px;">
+                            Ara
+                        </button>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="col-md-9">
+                @if (Model.Count() == 0)
+                {
+                    <div class="alert alert-warning" role="alert"><i class="fas fa-exclamation-circle"></i> Bu Kategoriye Ait Açık Artırma Bulunmamaktadır!</div>
+                }
+                else
+                {
+                    <div class="alert alert-warning" role="alert"><i class="fas fa-check"></i> <strong>@Model.Count() Adet</strong> Açık Artırma Bulunmaktadır!</div>
+                }
+                @Html.Partial("_ProductList", Model)
+            </div>
+        </div>
+    </div>
+}

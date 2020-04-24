@@ -1,0 +1,22 @@
+﻿<style>
+    .width{
+        width:400px;
+    }
+</style>
+
+@using (Html.BeginForm("List","Home",FormMethod.Get))
+{
+    @*<form class="form-inline">*@ 
+        @*<input class="form-control mr-sm-2" type="search" placeholder="Ürün Ara" aria-label="Search" style="width:410px !important; display:inline-block;">*@
+        <div class="well">
+            <div class="input-group">
+                @Html.TextBox("q", null, new { @class = "form-control mr-sm-2 width"   })
+                <button class="btn btn-outline-info my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+        
+    @*</form>*@
+}
+
+
+

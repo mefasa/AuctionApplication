@@ -1,0 +1,58 @@
+﻿@model AuctionDemo.Entities.Offer
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 style="margin-top:10px;">Sil</h2>
+
+<h3>Teklifi Silmek İstediğinize Emin Misiniz?</h3>
+<div>
+    <h4>Teklif</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OfferValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OfferValue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-primary" /> |
+            @Html.ActionLink("Listeye Geri Dön", "Index")
+        </div>
+    }
+</div>

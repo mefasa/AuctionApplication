@@ -1,0 +1,55 @@
+﻿@model AuctionDemo.Models.ProductModel
+
+@{var someVariable = "visible";}
+
+<div class="row mt-2 ">
+    <div class="col-md-12">
+        <h5>Başlangıç Fiyat : @Model.Price <i class="fas fa-lira-sign"></i></h5>
+        @if (Model.Offers.Count != 0)
+        {
+            <h4 id="product-price">Verilen Son Fiyat : @Model.Offers[Model.Offers.Count - 1].OfferValue <i class="fas fa-lira-sign"></i></h4>
+        }
+        else
+        {
+            someVariable = "hidden";
+            <h4 id="product-price">İlk Fiyat Veren Siz Olun! </h4>
+        }
+    </div>
+    <div class="col-md-12">
+        <div class="editable" contenteditable="true" style="overflow-y:scroll; visibility:@someVariable.ToString(); max-height: 100px;">
+            <ul>
+                @for (int i = Model.Offers.Count - 1; i >= 0; i--)
+                {
+                    if (i == Model.Offers.Count - 1)
+                    {
+                        <li style="color:#F07BA2">@Model.Offers[i].OfferValue <i class="fas fa-lira-sign"></i> - @Model.Offers[i].UserName</li>
+                    }
+                    else
+                    {
+                        <li>@Model.Offers[i].OfferValue <i class="fas fa-lira-sign"></i> - @Model.Offers[i].UserName</li>
+                    }
+                }
+
+            </ul>
+        </div>
+    </div>
+
+</div>
+<div class="col-md-12 mt-2">
+
+    <form class="form-inline" style="padding: 1rem">
+
+        <div class="form-horizontal">
+
+            <div>
+                <input type="number" name="OfferValue" min="0.00" step="10.00" value=@Model.Price id="OfferValue" class="form-control" placeholder="Fiyatı Yazın(₺)"style="width:260px;">
+                <button type="submit" class="btn btn-success"style="margin-top:10px;">
+                    <i class="fas fa-gavel"></i> Teklif Ver
+                </button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+

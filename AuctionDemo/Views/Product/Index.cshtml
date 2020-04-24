@@ -1,0 +1,81 @@
+﻿@model IEnumerable<AuctionDemo.Entities.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "/Views/Shared/_AdminLayout.cshtml";
+}
+        <a class="btn btn-danger" style="border-radius:10px; margin-top:20px;" href="~/Account/Logout">Admin Panelinden Çıkış Yap</a>
+    
+<h2 style="margin-top:20px;">Ürünler</h2>
+
+<p>
+    @*@Html.ActionLink("Yeni Ürün", "Create", new { @class = "fa fa-plus-circle" })*@
+    <a href="/Product/Create" class="btn btn-danger" style="color:black; background-color:#17a2b8 ; border-radius:15px; " >+ &nbsp; Yeni Ürün</a>
+</p>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsApproved)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.IsApproved)*@
+            @if (item.IsApproved)
+            {
+                <label class="badge badge-success">
+                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    Yayında
+                </label>
+            }
+            else
+            {
+                <label class="badge badge-success">
+                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    Yayında Değil
+                </label>
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImagePath)
+        </td>
+        <td style="width:200px;">
+            @Html.ActionLink(" ", "Details", new { id = item.Id }, new { @class = "fa fa-info-circle fa-lg" })|
+            @*<a href="/Category/Details/@item.Id" class="fa fa-info-circle" />*@
+            @Html.ActionLink("Güncelle", "Edit", new { id = item.Id }, new { @class = "btn btn-success btn-sm" }) |
+            @Html.ActionLink("Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+        </td>
+    </tr>
+}
+
+</table>
